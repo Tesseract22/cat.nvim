@@ -67,13 +67,13 @@ cmp.setup({
     }),
 })
 require'lspconfig'.zls.setup{
-    cmd = { "/home/cat/ziglang/zls/zig-out/bin/zls"},
+    cmd = { "/home/cat/Software/dev/zls/zig-out/bin/zls"},
     log_level = vim.lsp.protocol.MessageType.Log,
     message_level = vim.lsp.protocol.MessageType.Log,
     settings = {
 	zls  = {
-	    zig_lib_path = "/home/cat/ziglang/zig/lib/",
-	    zig_exe_path = "/home/cat/ziglang/zig/zig"
+	    -- zig_lib_path = "/home/cat/ziglang/zig/lib/",
+	    -- zig_exe_path = "/home/cat/ziglang/zig/zig"
 	}
     }
 }
