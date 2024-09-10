@@ -58,13 +58,15 @@ cmp.setup({
 	{name = 'nvim_lsp'},
     }, {
 	{name = 'buffer'},
-    }),
-    
+    }), 
+    completion = {
+	autocomplete = false
+    }, 
     mapping = cmp.mapping.preset.insert({
 	['<C-z>'] = cmp.mapping.select_prev_item(cmp_select),
 	['<C-x>'] = cmp.mapping.select_next_item(cmp_select),
-	['<CR>'] = cmp.mapping.confirm({select = true}),
-			
+	['<cr>'] = cmp.mapping.confirm({select = true}),
+	['<C-c>'] = cmp.mapping.complete(),				
 	['<C-Space>'] = cmp.mapping.abort(),
     }),
 })
