@@ -39,6 +39,7 @@ return require('packer').startup(function(use)
 	end
     }
     use 'paretje/nvim-man'
+    use 'NeogitOrg/neogit'
 
 end)
 
