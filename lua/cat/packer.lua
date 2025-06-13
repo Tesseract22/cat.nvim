@@ -40,7 +40,7 @@ return require('packer').startup(function(use)
     }
     use 'paretje/nvim-man'
     use 'NeogitOrg/neogit'
-
+    use 'mg979/vim-visual-multi'
 end)
 
 
