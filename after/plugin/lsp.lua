@@ -58,12 +58,12 @@ cmp.setup({
 	['<C-z>'] = cmp.mapping.select_prev_item(cmp_select),
 	['<C-x>'] = cmp.mapping.select_next_item(cmp_select),
 	['<cr>'] = cmp.mapping.confirm({select = true}),
-	['<C-c>'] = cmp.mapping.complete(),				
+	['<C-c>'] = cmp.mapping.complete(),
 	['<C-Space>'] = cmp.mapping.abort(),
     }),
 })
 
-local zls = require('after.plugin.zls')
+local zls = require('cat.zls')
 require'lspconfig'.zls.setup{
     cmd = { zls.zls_path },
     -- log_level = vim.lsp.protocol.MessageType.Log,
