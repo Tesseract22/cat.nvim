@@ -70,16 +70,12 @@ cmp.setup({
 	['<C-Space>'] = cmp.mapping.abort(),
     }),
 })
+
+local zls = require('after.plugin.zls')
 require'lspconfig'.zls.setup{
-    cmd = { "/home/cat/Software/dev/zls/zig-out/bin/zls"},
-    log_level = vim.lsp.protocol.MessageType.Log,
-    message_level = vim.lsp.protocol.MessageType.Log,
-    settings = {
-	zls  = {
-	    -- zig_lib_path = "/home/cat/ziglang/zig/lib/",
-	    -- zig_exe_path = "/home/cat/ziglang/zig/zig"
-	}
-    }
+    cmd = { zls.zls_path },
+    -- log_level = vim.lsp.protocol.MessageType.Log,
+    -- message_level = vim.lsp.protocol.MessageType.Log,
 }
 vim.g.zig_fmt_autosave = 0
 
