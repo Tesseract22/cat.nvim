@@ -39,8 +39,14 @@ return require('packer').startup(function(use)
 	end
     }
     use 'paretje/nvim-man'
+    use 'voldikss/vim-floaterm'
+    use 'brenton-leighton/multiple-cursors.nvim'
     use 'NeogitOrg/neogit'
     use 'mg979/vim-visual-multi'
+    use {
+	'nvim-lualine/lualine.nvim',
+	requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
 end)
 
 
