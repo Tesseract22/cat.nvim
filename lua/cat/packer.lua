@@ -10,6 +10,7 @@ return require('packer').startup(function(use)
     }
 
     use({ 'rose-pine/neovim', as = 'rose-pine' })
+    use({ 'everviolet/nvim', as = 'evergarden' })
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use('mbbill/undotree')
     use({'VonHeikemen/lsp-zero.nvim', branch = 'v4.x'})
@@ -47,6 +48,8 @@ return require('packer').startup(function(use)
 	'nvim-lualine/lualine.nvim',
 	requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
+    use 'ggandor/leap.nvim'
 end)
+
 
 
