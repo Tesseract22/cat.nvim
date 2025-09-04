@@ -64,10 +64,17 @@ cmp.setup({
 })
 
 local zls = require('cat.zls')
-require'lspconfig'.zls.setup{
+lspconfig.zls.setup{
     cmd = { zls.zls_path },
+    zig_exe_path = "zig",
     -- log_level = vim.lsp.protocol.MessageType.Log,
     -- message_level = vim.lsp.protocol.MessageType.Log,
 }
+lspconfig.clangd.setup({})
 vim.g.zig_fmt_autosave = 0
+
+lspconfig.hls.setup{
+    cmd = { "haskell-language-server-wrapper", "--lsp" },
+    ghc_version = "9.5"
+}
 
