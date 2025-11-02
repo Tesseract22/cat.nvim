@@ -50,7 +50,10 @@ return require('packer').startup(function(use)
 	'nvim-lualine/lualine.nvim',
 	requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
-    use 'https://codeberg.org/andyg/leap.nvim'
+    use {
+	'https://codeberg.org/andyg/leap.nvim',
+	as = "leap.nvim"
+    }
     use({
 	"stevearc/oil.nvim",
 	config = function()
