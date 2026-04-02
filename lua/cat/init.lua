@@ -1,8 +1,12 @@
 require('cat.kepmap')
 require('cat.packer')
 require('cat.plug')
--- vim.cmd('colorscheme rose-pine')
 vim.cmd('colorscheme evergarden')
+require 'evergarden'.setup {
+    theme = {
+	variant = 'winter',
+    }
+}
 vim.cmd('set shiftwidth=4')
 
 vim.cmd('set number');

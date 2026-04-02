@@ -15,9 +15,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	vim.keymap.set('i', '<C-s>', function() vim.lsp.buf.signature_help() end, opts)
     end,
 })
-local lspconfig = require('lspconfig')
-lspconfig.lua_ls.setup({
-    capabilities = lsp_capabilities,
+local lsp = vim.lsp
+lsp.config('lua_ls', {
+    -- capabilities = lsp_capabilities,
     settings = {
 	Lua = {
 	    runtime = {
@@ -34,6 +34,8 @@ lspconfig.lua_ls.setup({
 	}
     }
 })
+lsp.enable('lua_ls')
+
 require('mason').setup({})
 require('mason-lspconfig').setup({
     ensure_installed = {'clangd'},
@@ -50,10 +52,10 @@ cmp.setup({
 	{name = 'nvim_lsp'},
     }, {
 	{name = 'buffer'},
-    }), 
+    }),
     completion = {
 	autocomplete = false
-    }, 
+    },
     mapping = cmp.mapping.preset.insert({
 	['<C-z>'] = cmp.mapping.select_prev_item(cmp_select),
 	['<C-x>'] = cmp.mapping.select_next_item(cmp_select),
@@ -64,24 +66,26 @@ cmp.setup({
 })
 
 local zls = require('cat.zls')
-lspconfig.zls.setup{
+lsp.config('zls', {
     cmd = { zls.zls_path },
     zig_exe_path = "zig",
     -- log_level = vim.lsp.protocol.MessageType.Log,
     -- message_level = vim.lsp.protocol.MessageType.Log,
-}
-lspconfig.clangd.setup({})
+})
+lsp.enable('zls')
 vim.g.zig_fmt_autosave = 0
 
-lspconfig.hls.setup{
+lsp.config('clangd', {})
+lsp.enable('clangd')
+
+lsp.config('hls', {
     cmd = { "haskell-language-server-wrapper", "--lsp" },
     ghc_version = "9.5"
-}
+})
+lsp.enable('hls')
 
-lspconfig.pylsp.setup{
-
-}
-vim.g.zig_fmt_autosave = 0
+lsp.config('pylsp', {})
+lsp.enable('pylsp')
 
 local vue_language_server_path = vim.fn.expand("$MASON/packages/vue-language-server/node_modules/@vue/language-server")
 local tsserver_filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
@@ -117,7 +121,14 @@ local ts_ls_config = {
 local vue_ls_config = {}
 
 -- If using vtsls
-lspconfig.vtsls.setup(vtsls_config)
+lsp.config('vtsls', vtsls_config)
+lsp.enable('vtsls')
 -- If using ts_ls
-lspconfig.ts_ls.setup(ts_ls_config)
-lspconfig.volar.setup(vue_ls_config)
+lsp.config('ts_ls', ts_ls_config)
+lsp.enable('ts_ls')
+lsp.config('volar', vue_ls_config)
+lsp.enable('volar')
+
+
+lsp.config('rust_analyzer', {})
+lsp.enable('rust_analyzer')

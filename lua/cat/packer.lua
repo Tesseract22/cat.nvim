@@ -3,13 +3,16 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install' }
     use     {
 	'nvim-telescope/telescope.nvim', tag = '0.1.8',
 	-- or                            , branch = '0.1.x',
 	requires = { {'nvim-lua/plenary.nvim'} }
     }
 
-    use({ 'everviolet/nvim', as = 'evergarden' })
+    use {
+	'https://github.com/everviolet/nvim', as = 'evergarden',
+    }
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use('mbbill/undotree')
     use({'VonHeikemen/lsp-zero.nvim', branch = 'v4.x'})
@@ -47,7 +50,14 @@ return require('packer').startup(function(use)
 	'nvim-lualine/lualine.nvim',
 	requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
-    use 'ggandor/leap.nvim'
+    use 'https://codeberg.org/andyg/leap.nvim'
+    use({
+	"stevearc/oil.nvim",
+	config = function()
+	    require("oil").setup()
+	end,
+    })
+    use 'rhysd/vim-clang-format'
 end)
 
 
